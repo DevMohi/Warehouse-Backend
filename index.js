@@ -134,6 +134,9 @@ async function run() {
 
         // deleteItems 
 
+        app.get('/hero', async (req, res) => {
+            res.send('Hero meets heroku')
+        })
 
     } finally {
         // await client.close();
