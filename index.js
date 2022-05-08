@@ -30,8 +30,7 @@ async function run() {
             res.send(reviews)
         });
 
-        // To get one item hello
-        //hello
+        // To get one item
         app.get('/inventory/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) }
@@ -57,6 +56,11 @@ async function run() {
             }
         })
 
+        app.post('/review', async (req, res) => {
+            const newReview = req.body;
+            const result = await reviewCollection.insertOne(newReview)
+            res.send({ success: 'Review Upload Success' })
+        })
         //DELETE 
         app.delete('/inventory/:id', async (req, res) => {
             const id = req.params.id
